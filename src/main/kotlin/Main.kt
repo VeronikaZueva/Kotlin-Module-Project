@@ -1,3 +1,8 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    println("Привет! В этом приложении ты можешь создавать заметки и управлять архивами (списками) созданных заметок")
+    println("Начнем...")
+
+    //Создаем объект меню
+    val menu : Menu = Menu()
+
 }
