@@ -1,2 +1,2 @@
-class InterfaceLists {
+interface InterfaceLists {
 }

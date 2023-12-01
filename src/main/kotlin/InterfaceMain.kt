@@ -1,3 +1,3 @@
 interface InterfaceMain {
-    val numberScreen : Int
+    var numberScreen : Int
 }
