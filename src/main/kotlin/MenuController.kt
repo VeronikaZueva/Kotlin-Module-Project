@@ -1,7 +1,7 @@
 import Singleton.screenNumber
 import kotlin.system.exitProcess
 
-class MenuController(private val archiveController: ArchiveController, private val noteController: NoteController) :
+class MenuController(private val controller: Controller) :
     Overall() {
 
     //Определяем тип меню, какой необходимо выводить
@@ -11,39 +11,44 @@ class MenuController(private val archiveController: ArchiveController, private v
             2 -> Menu.LISTARCHIVE.printMenu()
             3 -> Menu.ARCHIVE.printMenu()
             4 -> Menu.NOTE.printMenu()
-            5 -> Menu.CREATE.printMenu()
         }
     }
 
-    //Обработчик сканнера
+    //Обработчик команд меню (Контроллер) для экранов верхнего уровня
      fun chooseCommand() {
-         when (goScanner()) {
-                0 -> {
-                    if (screenNumber == 1) exitProcess(0)
-                    else println("Пока ничего не делаем")
-
-                }
-
-                1 -> {
-                    if (screenNumber == 1) {
-                        archiveController.createArchieve()
-                    }
-                    else noteController.createNote()
-                }
-
-                2 -> {
-                    if (screenNumber == 1) archiveController.seeListArchieve()
-                }
-
-                else -> {
-                    println("Такой команды нет в меню. Попробуйте ввести комаду еще раз")
-
-                }
-
+        when(screenNumber) {
+            1 -> {
+                if(goScanner() == 0) exitProcess(0)
+                else if(goScanner() == 1) controller.createArchieve()
+                else if(goScanner() == 2) controller.seeListArchieve()
+                else errorMenu()
+            }
+            2 -> {
+                if(goScanner() == 0) goMenu(1)
+                else if(goScanner() == 1) controller.createArchieve()
+                else if(goScanner() == 2) goMenu(screenNumber = 3)
+                else errorMenu()
+            }
+            3 -> {
+                if(goScanner() == 0) goMenu(2)
+                else if(goScanner() == 1) controller.createNote()
+                else if(goScanner() == 2) goMenu(screenNumber = 4)
+                else errorMenu()
+            }
+            4 -> {
+                if(goScanner() == 0) goMenu(3)
+                else errorMenu()
             }
 
         }
 
+        }
+
+
+    //Обработчик сообщения об ошибке (в будущем, можно сделать отдельное для каждого экрана)
+    private fun errorMenu() {
+        println("Вы указали некорректную команду. Попробуйте еще раз. Нужно ввести цифру из указанному перечня меню")
+    }
 
 }
 
