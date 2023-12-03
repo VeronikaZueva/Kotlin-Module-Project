@@ -1,48 +1,8 @@
-import java.util.Scanner
+enum class Menu : PrintMenu  {
+    GENERAL {override fun printMenu() {println("0 - выход из программы; 1 - создать архив; 2 - ваш список архивов")}},
+    LISTARCHIVE {override fun printMenu() {println("0 - вернуться в предыдущее меню; ИЛИ укажите номер выбранного архива для просмотра")} },
+    ARCHIVE {override fun printMenu() {println("0 - вернуться в предыдущее меню; 1 - создать заметку в этом архиве; ИЛИ укажите номер выбранной заметки для просмотра")}},
+    NOTE {override fun printMenu() {println("0 - вернуться к другим заметкам архива")}},
+    CREATE {override fun printMenu() {println("0 - отменить действие")}};
 
-class Menu {
-    fun menuCommand(numberScreen : Int) {
-        //Метод определения экрана
-        when(numberScreen) {
-            1 -> println("Вызываем метод просмотра списков архивов и списков")
-            2 -> println("Вызываем просмотр архива")
-            3 -> println("Вызываем просмотр заметки")
-            4 -> {createNote(); println("Заметка успешно создана")}
-            5 -> {createArchieve(); println("Архив успешно создан")}
-            else -> println("Что-то пошло не так...")
-        }
-    }
-
-    private val scanner =  Scanner(System.`in`)
-
-    //Методы действий
-    //Создаем заголовок
-    private fun createTitle() : String {
-        println("Укажите название")
-        var title : String = scanner.nextLine()
-        while(title.isEmpty()) {
-            println("Вы не указали название. Попробуйте еще раз")
-            title = scanner.nextLine()
-        }
-        return title
-    }
-    //Создание архива
-    private fun createArchieve() : Archive {
-        val titleArchieve : String = createTitle()
-        val listNote = mutableListOf<Note>()
-
-        return Archive(titleArchieve, listNote)
-    }
-
-    //Создание заметки
-    private fun createNote() : Note {
-        val titleNote : String = createTitle()
-        println("Введите текст заметки")
-        var text : String = scanner.nextLine()
-        while(text.isEmpty()) {
-            println("Вы не указали Текст заметки. Попробуйте еще раз")
-            text = scanner.nextLine()
-        }
-        return Note(titleNote, text)
-    }
 }

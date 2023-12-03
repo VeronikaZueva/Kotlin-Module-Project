@@ -1,5 +1,1 @@
-class Archive(title : String, list: MutableList<Note>?) : InterfaceObjects {
-    override var numberScreen : Int = 5
-
-
-}
+data class Archive(val title : String, val list: MutableList<Note>?)

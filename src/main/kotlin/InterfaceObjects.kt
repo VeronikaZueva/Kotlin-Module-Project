@@ -1,3 +1,0 @@
-interface InterfaceObjects : InterfaceMain {
-
-}

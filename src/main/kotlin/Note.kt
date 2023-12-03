@@ -1,4 +1,1 @@
-class Note(title : String, text : String) : InterfaceObjects {
-    override var numberScreen : Int = 4
-
-}
+data class Note(val title : String, val text : String)
