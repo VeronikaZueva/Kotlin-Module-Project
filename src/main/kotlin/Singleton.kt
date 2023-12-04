@@ -3,5 +3,4 @@ object Singleton {
     val menuController = MenuController(Controller())
     //Задаем переменные, которые будут менять свое состояние по ходу выполнения программы
     var screenNumber : Int = 1
-    var numArchive : Int = 1
 }

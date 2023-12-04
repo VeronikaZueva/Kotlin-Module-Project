@@ -1,10 +1,10 @@
-import kotlin.system.exitProcess
 import Singleton.screenNumber
+import kotlin.system.exitProcess
 
 class MenuController(private val controller: Controller) :
     Overall() {
 
-    //Определяем тип меню, какой необходимо выводить
+    //Выводим меню на экран
     fun goMenu(screenNumber : Int) {
         when (screenNumber) {
             1 -> Menu.GENERAL.printMenu()
@@ -15,46 +15,44 @@ class MenuController(private val controller: Controller) :
         }
     }
 
-    //Обработчик команд меню (Контроллер) для всех экранов
-     fun chooseCommand() {
+
+    //Определяем тип меню, какой необходимо выводить
+    fun goCommand() {
         val number : Int = goScanner()
-        when(screenNumber) {
-            1 -> when (number) {
+        if(screenNumber == 1) {
+            when (number) {
                 0 -> exitProcess(0)
                 1 -> controller.createArchieve()
                 2 -> controller.seeListArchieve()
                 else -> errorMenu()
             }
-            2-> {
-                if(number == 0) screenNumber = 1
-                else controller.selectItem(number)
-            }
+        }
+        else {
+            val numArchive : Int = number - 1
+            val archive = ArchiveController(numArchive)
+            when(screenNumber) {
+            2 -> archive.selectItem()
             3 -> {
-                when (number) {
-                    0 -> screenNumber = 2
-                    1 -> {controller.createNote()}
-                    2 -> screenNumber = 4
-                    else -> errorMenu()
+                    when (number) {
+                        0 -> screenNumber = 2
+                        1 -> archive.createNote()
+                        2 -> screenNumber = 4
+                        else -> errorMenu()
+                    }
+                }
+            4-> archive.selectNote(number)
+            5 -> {
+                    if(number == 0) screenNumber = 3
+                    else errorMenu()
                 }
             }
-            4-> {
-                if(number == 0) screenNumber = 2
-                else controller.selectItem(number)
-            }
-            5 -> {
-                if(number == 0) screenNumber = 3
-                else errorMenu()
-            }
         }
-
-        }
-
+    }
 
     //Обработчик сообщения об ошибке (в будущем, можно сделать отдельное для каждого экрана)
     private fun errorMenu() {
         println("Вы указали некорректную команду. Попробуйте еще раз. Нужно ввести цифру из указанному перечня")
     }
-
 
 }
 

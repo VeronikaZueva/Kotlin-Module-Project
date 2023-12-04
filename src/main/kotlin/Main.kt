@@ -10,7 +10,7 @@ fun main() {
         //Выводим меню на экран в зависимости от номера экрана
         menuController.goMenu(screenNumber)
         //Вызываем обработчик меню
-        menuController.chooseCommand()
+        menuController.goCommand()
     }
 
 }
