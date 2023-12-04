@@ -1,0 +1,1 @@
+data class Archive(val title : String, val list: MutableList<Note>?)
