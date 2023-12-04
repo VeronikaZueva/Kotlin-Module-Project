@@ -1,6 +1,5 @@
 import java.util.Scanner
 
-
 open class Overall {
     //Даем пользователю возможность определиться. Для этого создаем scanner
     val scanner = Scanner(System.`in`).useDelimiter("\\n")!!
@@ -30,6 +29,5 @@ open class Overall {
             else { return title }
         }
     }
-
 
 }

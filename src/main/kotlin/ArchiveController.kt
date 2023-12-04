@@ -48,6 +48,4 @@ class ArchiveController : Overall() {
         println("Название: '${listArchieve[numArchive].list!![num].title}'")
         println("Текст: '${listArchieve[numArchive].list!![num].text}'")
     }
-
-
 }

@@ -3,5 +3,5 @@ enum class Menu : PrintMenu  {
     LISTARCHIVE {override fun printMenu() {println("0 - вернуться в предыдущее меню; ИЛИ укажите номер архива, чтобы его просмотреть")} },
     ARCHIVE {override fun printMenu() {println("0 - вернуться в предыдущее меню; 1 - создать заметку в этом архиве; 2 - выбрать заметку")}},
     SELECT {override fun printMenu() {println("0 - вернуться в предыдущее меню; ИЛИ укажите номер заметки для детального просмотра")}},
-    NOTE {override fun printMenu() {println("0 - вернуться к другим заметкам архива")}};
+    NOTE {override fun printMenu() {println("0 - вернуться к другим заметкам архива;")}};
 }

@@ -11,5 +11,4 @@ fun main() {
         menuController.goMenu(screenNumber)
         menuController.goCommand()
     }
-
 }

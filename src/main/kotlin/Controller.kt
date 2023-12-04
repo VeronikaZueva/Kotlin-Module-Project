@@ -2,7 +2,6 @@ import Singleton.listArchieve
 import Singleton.screenNumber
 
 class Controller : Overall() {
-
 //Действия экрана 1: screenNumber - 1
     //Создание архива
     fun createArchieve() {
